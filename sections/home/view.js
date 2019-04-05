@@ -1,7 +1,9 @@
 import React, { Component } from 'react'
-import { SafeAreaView, FlatList, Text} from 'react-native'
+import { SafeAreaView, FlatList, Text, RefreshControl} from 'react-native'
+import { Actions } from 'react-native-router-flux'
 
 import styles from './styles'
+import * as colors from '../../commons/colors'
 import { CocktailCell } from '../../widgets'
 
 
@@ -12,14 +14,15 @@ class Home extends Component {
   }
 
   _onCocktailTapped = cocktail => {
-    const title = cocktail.title
     this.props.updateCocktailSelected(cocktail)
+    Actions.CocktailDetail({ cocktail })
   }
 
    _keyExtractor = (item, index) => `${item.idDrink}`
 
    _renderItem = ({ item, index }) => (
-    <CocktailCell cocktail={item} onPress={cocktail => this._onCocktailTapped(cocktail)} />
+    <CocktailCell cocktail={item} 
+      onPress={cocktail => this._onCocktailTapped(cocktail)} />
   )
 
   _renderNoResultsText = isFetching => {
@@ -41,8 +44,17 @@ class Home extends Component {
         renderItem={this._renderItem}
         numColumns={2}
         ListEmptyComponent={_ => this._renderNoResultsText(isFetching)}
+        refreshControl={
+          <RefreshControl
+            onRefresh={this.props.getCocktailsList}
+            refreshing={isFetching}
+            tintColor={colors.white} // iOS
+            colors={[colors.white]} // Android
+          />
+        }
         />
       </SafeAreaView>
+
     )
   }
 }

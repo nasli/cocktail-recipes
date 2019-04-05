@@ -1,7 +1,7 @@
 import React, { Component } from 'react'
 import { StatusBar } from 'react-native'
 import { Stack, Router, Scene } from 'react-native-router-flux'
-import { Home } from './sections/'
+import { Home, CocktailDetail } from './sections/'
 import { configureAxios } from './webservices'
 import * as colors from './commons/colors'
 import { store } from './config/redux'
@@ -25,6 +25,13 @@ export default class App extends Component {
               component={Home}
               {...navBarStyles} initial
             />
+
+            <Scene
+              key={'CocktailDetail'}
+              component={CocktailDetail}
+              {...navBarStyles}
+            />
+
           </Stack>
         </Router>
       </Provider>

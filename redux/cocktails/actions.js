@@ -30,6 +30,7 @@ export function fetchCocktailsList () {
     api
       .fetchCocktails()
       .then(res => {
+        console.log('RES API: ', res)
         const list = res.data.drinks
         const total = list.length
 
