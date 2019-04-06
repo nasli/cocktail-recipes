@@ -1,18 +1,18 @@
 import { connect } from 'react-redux'
 import View from './view'
-import * as CocktailsActions from '../../redux/cocktails/actions'
+import * as CocktailDetailActions from '../../redux/cocktailDetail/actions'
 
 const mapStateToProps = state => {
   return {
-    cocktail: state ? state.cocktails.selected : [] // ,
-    // isFetching: state ? state.cocktails.isFetching : false
+    cocktailDetail: state ? state.cocktailDetail.cocktailDetail : null,
+    isFetching: state ? state.cocktailDetail.isFetching : false
   }
 }
 
 const mapDispatchToProps = (dispatch, props) => {
   return {
     getCocktailDetail: () => {
-      dispatch(CocktailsActions.fetchCocktailDetail())
+      dispatch(CocktailDetailActions.fetchCocktailDetail())
     }
   }
 }

@@ -15,18 +15,18 @@ class CocktailDetail extends Component {
   }
 
   render () {
-    const { cocktail } = this.props
-    console.log('COCKTAIL DETAIL ', cocktail)
-    const imageThumb = _.has(cocktail, 'strDrinkThumb')
-      ? { uri: cocktail.strDrinkThumb }
+    const { cocktailDetail } = this.props
+    console.log('COCKTAIL DETAIL ', cocktailDetail)
+    const imageThumb = _.has(cocktailDetail, 'strDrinkThumb')
+      ? { uri: cocktailDetail.strDrinkThumb }
       : null
-    const name = _.get(cocktail, 'strDrink', '')
-    const glass = _.get(cocktail, 'strGlass', '')
-    const alcoholic = _.get(cocktail, 'strAlcoholic', '')
-    const iba = _.get(cocktail, 'strIBA', '')
-    const category = _.get(cocktail, 'strCategory', '')
-    const tags = _.get(cocktail, 'strTags', '')
-    const instructions = _.get(cocktail, 'strInstructions', '')
+    const name = _.get(cocktailDetail, 'strDrink', '')
+    const glass = _.get(cocktailDetail, 'strGlass', '')
+    const alcoholic = _.get(cocktailDetail, 'strAlcoholic', '')
+    const iba = _.get(cocktailDetail, 'strIBA', '')
+    const category = _.get(cocktailDetail, 'strCategory', '')
+    const tags = _.get(cocktailDetail, 'strTags', '')
+    const instructions = _.get(cocktailDetail, 'strInstructions', '')
     // TODO: Ingredients
     // TODO: call API by id
 
