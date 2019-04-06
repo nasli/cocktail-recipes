@@ -28,7 +28,6 @@ class CocktailDetail extends Component {
     const tags = _.get(cocktailDetail, 'strTags', '')
     const instructions = _.get(cocktailDetail, 'strInstructions', '')
     // TODO: Ingredients
-    // TODO: call API by id
 
     return (
       <SafeAreaView style={styles.container}>
@@ -38,30 +37,42 @@ class CocktailDetail extends Component {
             <Text style={styles.label}>{'Name:'}</Text>
             <Text style={styles.value}>{name}</Text>
           </View>
-          <View style={styles.infoRow}>
-            <Text style={styles.label}>{'Glass: '}</Text>
-            <Text style={styles.value}>{glass}</Text>
-          </View>
-          <View style={styles.infoRow}>
-            <Text style={styles.label}>{'Alcoholic: '}</Text>
-            <Text style={styles.value}>{alcoholic}</Text>
-          </View>
-          <View style={styles.infoRow}>
-            <Text style={styles.label}>{'IBA: '}</Text>
-            <Text style={styles.value}>{iba}</Text>
-          </View>
-          <View style={styles.infoRow}>
-            <Text style={styles.label}>{'Category: '}</Text>
-            <Text style={styles.value}>{category}</Text>
-          </View>
-          <View style={styles.infoRow}>
-            <Text style={styles.label}>{'Tags: '}</Text>
-            <Text style={styles.value}>{tags}</Text>
-          </View>
-          <View style={styles.infoRow}>
-            <Text style={styles.label}>{'Instructions: '}</Text>
-            <Text style={styles.value}>{instructions}</Text>
-          </View>
+          { glass
+            ? <View style={styles.infoRow}>
+              <Text style={styles.label}>{'Glass: '}</Text>
+              <Text style={styles.value}>{glass}</Text>
+            </View>
+            : null }
+          { alcoholic
+            ? <View style={styles.infoRow}>
+              <Text style={styles.label}>{'Alcoholic: '}</Text>
+              <Text style={styles.value}>{alcoholic}</Text>
+            </View>
+            : null }
+          { iba
+            ? <View style={styles.infoRow}>
+              <Text style={styles.label}>{'IBA: '}</Text>
+              <Text style={styles.value}>{iba}</Text>
+            </View>
+            : null }
+          { category
+            ? <View style={styles.infoRow}>
+              <Text style={styles.label}>{'Category: '}</Text>
+              <Text style={styles.value}>{category}</Text>
+            </View>
+            : null }
+          { tags
+            ? <View style={styles.infoRow}>
+              <Text style={styles.label}>{'Tags: '}</Text>
+              <Text style={styles.value}>{tags}</Text>
+            </View>
+            : null }
+          { instructions
+            ? <View style={styles.infoRow}>
+              <Text style={styles.label}>{'Instructions: '}</Text>
+              <Text style={styles.value}>{instructions}</Text>
+            </View>
+            : null }
         </View>
       </SafeAreaView>
     )
