@@ -1,6 +1,6 @@
 import React, { Component } from 'react'
 import { StatusBar } from 'react-native'
-import { Stack, Router, Scene } from 'react-native-router-flux'
+import { Stack, Router, Scene, Tabs } from 'react-native-router-flux'
 import { Home, CocktailDetail } from './sections/'
 import { configureAxios } from './webservices'
 import * as colors from './commons/colors'
@@ -19,11 +19,42 @@ export default class App extends Component {
       <Provider store={store}>
         <Router>
           <Stack key={'root'}>
+            <Tabs
+              key='tabbar'
+              activeBackgroundColor='#DDD'
+              inactiveBackgroundColor='#FFF'
+              initial
+              {...navBarStyles}
+              hideNavBar
+            >
+              <Stack
+                key='tab_1'
+                title='Cocktails'
+                tabBarLabel='Cocktails'
+              >
+                <Scene
+                  key='home'
+                  component={Home}
+                  title='Cocktails' />
+              </Stack>
+
+              <Stack
+                key='tab_2'
+                title='Tab #2'
+                tabBarLabel='Add'
+              >
+                <Scene
+                  key='home'
+                  component={Home}
+                  title='Add Cocktail'
+                />
+              </Stack>
+            </Tabs>
             <Scene
               key={'Home'}
               hideNavBar
               component={Home}
-              {...navBarStyles} initial
+              {...navBarStyles}
             />
 
             <Scene
