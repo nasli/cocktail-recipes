@@ -28,6 +28,12 @@ export default function reducer (state = initialState, action = {}) {
         selected: action.value
       }
 
+    case types.COCKTAIL_UPDATE_DETAIL:
+      return {
+        ...state,
+        cocktail: action.value
+      }
+
     default:
       return state
   }

@@ -7,12 +7,17 @@ export function configureAxios () {
   axios.defaults.headers.post['Content-Type'] = 'application/json'
 }
 
-export function fetchCocktails () {
-  const url = '/filter.php?c=Cocktail'
+export function fetchCocktailsByFilter (params) {
+  const url = '/filter.php?' + qs.stringify(params, { skipNulls: true })
   return axios.get(url)
 }
 
-export function fetchCocktailsByFilterAlcoholic (params) {
-  const url = `/filter.php?a=` + qs.stringify(params, { skipNulls: true })
+// export function fetchCocktailsByFilterAlcoholic (params) {
+//   const url = `/filter.php?` + qs.stringify(params, { skipNulls: true })
+//   return axios.get(url)
+// }
+
+export function fetchCocktailById (cocktailId) {
+  const url = `/lookup.php?i=` + cocktailId
   return axios.get(url)
 }

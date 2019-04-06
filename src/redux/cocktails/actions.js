@@ -27,8 +27,9 @@ function updateFetching (value) {
 export function fetchCocktailsList () {
   return function (dispatch, getState) {
     dispatch(updateFetching(true))
+    const params = { c: 'Cocktail' }
     api
-      .fetchCocktails()
+      .fetchCocktailsByFilter(params)
       .then(res => {
         console.log('RES API: ', res)
         const list = res.data.drinks
@@ -38,6 +39,33 @@ export function fetchCocktailsList () {
       })
       .catch(err => {
         console.error('fetchCocktails err: ', err)
+      })
+      .finally(() => dispatch(updateFetching(false)))
+  }
+}
+
+function updateCocktailDetail (cocktail) {
+  return {
+    type: types.COCKTAIL_UPDATE_DETAIL,
+    value: cocktail
+  }
+}
+
+export function fetchCocktailDetail () {
+  return function (dispatch, getState) {
+    const cocktail = getState().cocktails.selected
+    console.log('PROPS COCKTAIL SELECTED: ', cocktail)
+
+    api
+      .fetchCocktailById(cocktail.idDrink)
+      .then(res => {
+        console.log('RES API detail selected: ', res)
+        const cocktail = res.data.drinks
+
+        dispatch(updateCocktailDetail(cocktail))
+      })
+      .catch(err => {
+        console.error('fetchCocktailDetail err: ', err)
       })
       .finally(() => dispatch(updateFetching(false)))
   }

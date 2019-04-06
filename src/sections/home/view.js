@@ -15,7 +15,7 @@ class Home extends Component {
 
   _onCocktailTapped = cocktail => {
     this.props.updateCocktailSelected(cocktail)
-    Actions.CocktailDetail({ cocktail })
+    Actions.CocktailDetail()
   }
 
    _keyExtractor = (item, index) => `${item.idDrink}`

@@ -9,6 +9,11 @@ import styles from './styles'
 import _ from 'lodash'
 
 class CocktailDetail extends Component {
+  constructor (props) {
+    super(props)
+    props.getCocktailDetail()
+  }
+
   render () {
     const { cocktail } = this.props
     console.log('COCKTAIL DETAIL ', cocktail)
