@@ -16,7 +16,6 @@ class CocktailDetail extends Component {
 
   render () {
     const { cocktailDetail } = this.props
-    console.log('COCKTAIL DETAIL ', cocktailDetail)
     const imageThumb = _.has(cocktailDetail, 'strDrinkThumb')
       ? { uri: cocktailDetail.strDrinkThumb }
       : null

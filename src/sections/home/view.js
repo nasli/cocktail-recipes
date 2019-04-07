@@ -13,14 +13,14 @@ class Home extends Component {
     props.getCocktailsList()
   }
 
+  _keyExtractor = (item, index) => `${item.idDrink}`
+
   _onCocktailTapped = cocktail => {
     this.props.updateCocktailSelected(cocktail)
     Actions.CocktailDetail()
   }
 
-   _keyExtractor = (item, index) => `${item.idDrink}`
-
-   _renderItem = ({ item, index }) => (
+  _renderItem = ({ item, index }) => (
     <CocktailCell cocktail={item} 
       onPress={cocktail => this._onCocktailTapped(cocktail)} />
   )
@@ -29,9 +29,25 @@ class Home extends Component {
     if (isFetching) {
       return null;
     }
-
-    return (  <Text style={styles.noResults}>{"No results available"}</Text> )
+    return (  
+      <Text style={styles.noResults}>
+        {"No results available"}
+      </Text>
+    )
   }
+
+  _onEndReached = ({ distanceFromEnd }) => {
+    const { cocktailsList, cocktailsTotal, isFetching } = this.props;
+
+    if (
+      distanceFromEnd > 100 &&
+      !isFetching &&
+      cocktailsList.length &&
+      cocktailsList.length < cocktailsTotal
+    ) {
+      this.props.updateCocktailsListOffset();
+    }
+  };
 
   render () {
     const {cocktailsList, isFetching } = this.props
@@ -44,6 +60,8 @@ class Home extends Component {
         renderItem={this._renderItem}
         numColumns={2}
         ListEmptyComponent={_ => this._renderNoResultsText(isFetching)}
+        onEndReached={this._onEndReached}
+        onEndReachedThreshold={0.8}
         refreshControl={
           <RefreshControl
             onRefresh={this.props.getCocktailsList}

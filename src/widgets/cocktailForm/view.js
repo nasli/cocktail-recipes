@@ -41,7 +41,7 @@ class CocktailAdd extends Component {
     };
 
   render () {
-    console.log('THIS PROPS adding cocktail', this.props)
+    ('THIS PROPS adding cocktail', this.props)
     return (
       <SafeAreaView style={styles.container}>
         <View style={{ flex: 1 }}>

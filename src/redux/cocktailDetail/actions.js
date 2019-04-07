@@ -22,9 +22,7 @@ export function fetchCocktailDetail () {
     api
       .fetchCocktailById(cocktail.idDrink)
       .then(res => {
-        console.log('RES API detail selected: ', res)
         const cocktailDetail = res.data.drinks[0]
-        console.log('PROPS COCKTAIL DETAIL: ', cocktailDetail)
 
         dispatch(updateCocktailDetail(cocktailDetail))
       })
