@@ -3,7 +3,6 @@ import { CocktailForm } from '../../widgets'
 import * as CocktailsActions from '../../redux/cocktails/actions'
 
 const mapStateToProps = state => {
-  console.log('MAPTOPROPS add ', state)
   return {
     favoriteList: state ? state.cocktails.favoriteList : []
   }

@@ -2,7 +2,7 @@ import React, { Component } from 'react'
 import { SafeAreaView, View, Text } from 'react-native'
 import _ from 'lodash'
 import styles from './styles'
-import { Input, Button } from '../'
+import { Input, Button, CameraPicker } from '../'
 
 class CocktailAdd extends Component {
   constructor (props) {
@@ -11,7 +11,10 @@ class CocktailAdd extends Component {
       name: _.get(props, 'cocktail.strDrink', ''),
       nameError: '',
       instructions: _.get(props, 'cocktail.strInstructions', ''),
-      instructionsError: ''
+      instructionsError: '',
+      image: _.has(props, "cocktail.strDrinkThumb")
+        ? { uri: props.cocktail.strDrinkThumb }
+        : null
     }
   }
 
@@ -29,9 +32,12 @@ class CocktailAdd extends Component {
       const cocktail = {
         strDrink: name,
         strInstructions: instructions,
+        strDrinkThumb: _.has(this.state, 'image.data')
+        ? "data:image/jpeg;base64," + this.state.image.data
+        : null
       };
       this.props.onSubmit(cocktail);
-      this.setState({ name: '', instructions: ''})
+      this.setState({ name: '', instructions: '', image: null })
     };
 
   render () {
@@ -55,6 +61,13 @@ class CocktailAdd extends Component {
             error={this.state.instructionsError}
           />
 
+          <View style={{ margin: 20 }}>
+            <Text style={styles.label}>{"Image:"}</Text>
+            <CameraPicker
+              value={this.state.image}
+              onChange={image => this.setState({ image })}
+            />
+          </View>
         </View>
 
         <Button
