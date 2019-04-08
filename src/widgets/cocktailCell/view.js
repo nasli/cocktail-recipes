@@ -1,5 +1,5 @@
 import React, { Component } from 'react'
-import { TouchableOpacity, Image , Text} from 'react-native'
+import { TouchableOpacity, Image , Text, View } from 'react-native'
 import styles from './styles'
 
 class CocktailCell extends Component {
@@ -19,9 +19,11 @@ class CocktailCell extends Component {
     const source = cocktail && cocktail.strDrinkThumb ? { uri: cocktail.strDrinkThumb } : null
     return (
       <TouchableOpacity onPress={ () => this._onCellTapped()} style={styles.cell}>
-        <Text style={styles.text}>{cocktail.strDrink}</Text>
         <Image style={styles.image}
-          source={source}/>
+            source={source}/>
+        <View style={styles.overlay}>
+          <Text style={styles.text}>{cocktail.strDrink}</Text>
+        </View>
       </TouchableOpacity>
     )
   }
