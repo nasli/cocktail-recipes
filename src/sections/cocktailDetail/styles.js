@@ -19,14 +19,25 @@ export default StyleSheet.create({
     flexDirection: 'row',
     alignItems: 'center'
   },
+  infoCol: {
+    paddingHorizontal: 20,
+    paddingVertical: 10,
+    flexDirection: 'column',
+    alignItems: 'flex-start'
+  },
   value: {
     fontSize: 16,
     color: colors.white,
     flex: 1,
     textAlign: 'right'
   },
+  bigValue: {
+    fontSize: 16,
+    color: colors.white,
+    paddingVertical: 10
+  },
   label: {
-    fontSize: 14,
-    color: colors.white
+    fontSize: 16,
+    color: colors.lightGrey
   }
 })

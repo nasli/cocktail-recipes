@@ -67,9 +67,9 @@ class CocktailDetail extends Component {
             </View>
             : null }
           { instructions
-            ? <View style={styles.infoRow}>
+            ? <View style={styles.infoCol}>
               <Text style={styles.label}>{'Instructions: '}</Text>
-              <Text style={styles.value}>{instructions}</Text>
+              <Text style={styles.bigValue}>{instructions}</Text>
             </View>
             : null }
         </View>
