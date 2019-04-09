@@ -5,8 +5,6 @@ const initialState = {
   total: 0,
   isFetching: false,
   selected: null,
-  favoriteList: [],
-  favoriteTotal: 0,
   offset: 0
 }
 
@@ -35,13 +33,6 @@ export default function reducer (state = initialState, action = {}) {
       return {
         ...state,
         cocktail: action.value
-      }
-
-    case types.COCKTAILS_UPDATE_FAVORITE_LIST:
-      return {
-        ...state,
-        favoriteList: action.favoriteList,
-        favoriteTotal: action.favoriteTotal
       }
 
     case types.COCKTAILS_UPDATE_OFFSET:

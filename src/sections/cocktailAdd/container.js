@@ -1,17 +1,17 @@
 import { connect } from 'react-redux'
 import { CocktailForm } from '../../widgets'
-import * as CocktailsActions from '../../redux/cocktails/actions'
+import * as FavoritesActions from '../../redux/favorites/actions'
 
 const mapStateToProps = state => {
   return {
-    favoriteList: state ? state.cocktails.favoriteList : []
+    favoriteList: state ? state.favorites.favoriteList : []
   }
 }
 
 const mapDispatchToProps = (dispatch, props) => {
   return {
     onSubmit: cocktail => {
-      dispatch(CocktailsActions.addCocktail(cocktail))
+      dispatch(FavoritesActions.addCocktail(cocktail))
     }
   }
 }
