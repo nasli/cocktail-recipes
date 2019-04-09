@@ -38,10 +38,9 @@ class CocktailAdd extends Component {
       };
       this.props.onSubmit(cocktail);
       this.setState({ name: '', instructions: '', image: null })
-    };
+    }
 
   render () {
-    ('THIS PROPS adding cocktail', this.props)
     return (
       <SafeAreaView style={styles.container}>
         <View style={{ flex: 1 }}>

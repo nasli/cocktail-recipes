@@ -1,5 +1,3 @@
-import { Actions } from 'react-native-router-flux'
-import { Alert } from 'react-native'
 import * as types from './types'
 import * as api from '../../webservices'
 
@@ -75,27 +73,5 @@ export function updateCocktailsListOffset () {
     const offset = getState().cocktails.offset + LIMIT
     dispatch(updateOffset(offset))
     dispatch(fetchCocktailsList())
-  }
-}
-
-function updateFavoriteCocktails (list, total) {
-  return {
-    type: types.COCKTAILS_UPDATE_FAVORITE_LIST,
-    favoriteList: list,
-    favoriteTotal: total
-  }
-}
-
-export function addCocktail (cocktail) {
-  return function (dispatch, getState) {
-    if (!cocktail) {
-      console.log('addCocktail err !cocktail ')
-      return
-    }
-    const { favoriteList } = getState().cocktails
-    const newList = [...favoriteList, cocktail]
-    const total = newList.length
-    dispatch(updateFavoriteCocktails(newList, total))
-    Alert.alert('¡Added!', `New cocktail added, total:${total}`)
   }
 }
