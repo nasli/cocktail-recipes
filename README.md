@@ -25,3 +25,6 @@ Run app
 react-native run-ios
 react-native run-android
 ```
+
+
+<img src="./screenshot.png" width="30%">
